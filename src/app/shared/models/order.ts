@@ -6,19 +6,21 @@ export class Order implements OrderI {
     nbJours = 1;
     tva = 20;
     state = StateOrder.OPTION;
-    id: number;
-    typePresta: string;
-    client: string;
-    comment: string;
+    id: number = -1;
+    typePresta: string = "";
+    client: string = "";
+    comment: string = "";
 
     constructor(obj?: Partial<Order>) {
         if(obj) {
             Object.assign(this, obj);
         }
     }
+
     totalHt(): number {
         return this.nbJours * this.tjmHt;
     }
+    
     totalTtc(): number {
         return this.totalHt() * (1 + this.tva / 100);
     }

@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { TemplatesModule } from './templates/templates.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule,
     UiModule,
     LoginModule,
