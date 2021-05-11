@@ -12,6 +12,16 @@ export class PageListOrderComponent implements OnInit {
   public collectionOrder: Order[] = [];
   public title: string = "";
   public subtitle: string = "";
+  public headers: string[] = [
+                              "Type",
+                              "Client",
+                              "NbJours",
+                              "TjmHt",
+                              "Total Ht",
+                              "Total Ttc",
+                              "State",
+                              "Comment"
+                            ];
 
   constructor(private orderService: OrderService) { }
 

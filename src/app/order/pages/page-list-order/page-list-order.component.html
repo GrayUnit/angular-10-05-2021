@@ -1,6 +1,17 @@
 <app-template-b [title]="title" [subtitle]="subtitle">
     
-    <p>{{ collectionOrder }}</p>
+    <app-table-light [headers]="headers">
+        <tr *ngFor="let item of collectionOrder">
+            <td>{{ item.typePresta }}</td>
+            <td>{{ item.client }}</td>
+            <td>{{ item.nbJours }}</td>
+            <td>{{ item.tjmHt }}</td>
+            <td>{{ item.totalHt() }}</td>
+            <td>{{ item.totalTtc() }}</td>
+            <td>{{ item.state }}</td>
+            <td>{{ item.comment }}</td>
+        </tr>
+    </app-table-light>
 
 </app-template-b>
 
