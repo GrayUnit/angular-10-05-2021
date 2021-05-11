@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, PreloadingStrategy, Router, RouterModule, Routes } from '@angular/router';
 import { PageLoginComponent } from './login/pages/page-login/page-login.component';
 
 const routes: Routes = [
@@ -12,11 +12,21 @@ const routes: Routes = [
   {
     path: 'clients',
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
-  }
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(
+    routes,
+    {
+      preloadingStrategy: PreloadAllModules,
+      enableTracing: false
+    }
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

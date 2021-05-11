@@ -27,7 +27,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CoreModule,
     SharedModule,
     TemplatesModule,
-    PageNotFoundModule,
     FontAwesomeModule
   ],
   providers: [],
