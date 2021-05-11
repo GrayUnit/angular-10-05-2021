@@ -12,6 +12,7 @@ import { ClientModule } from './client/client.module';
 import { SharedModule } from './shared/shared.module';
 import { TemplatesModule } from './templates/templates.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
     ClientModule,
     SharedModule,
     TemplatesModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
