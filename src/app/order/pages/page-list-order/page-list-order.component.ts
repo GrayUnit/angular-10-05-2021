@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Btn } from 'src/app/shared/interfaces/btn';
 import { Order } from 'src/app/shared/models/order';
@@ -11,7 +12,8 @@ import { OrderService } from '../../services/order.service';
 })
 export class PageListOrderComponent implements OnInit {
 
-  public collectionOrder: Order[] = [];
+  // public collectionOrder: Order[] = [];
+  public collectionOrder$: Observable<Order[]>;
   public title: string = "";
   public subtitle: string = "";
   public headers: string[] = [
@@ -25,30 +27,33 @@ export class PageListOrderComponent implements OnInit {
                               "Comment"
                             ];
   public states = Object.values(StateOrder);
-  public btnRoute = {
+  public btnRoute: Btn = {
     label: "Ajout d'un order",
     route: "add" 
   };
-  public btnHref = {
+  public btnHref: Btn = {
     label: "Go to google",
     href: "http://www.google.fr"
   };
-  public btnAction = {
+  public btnAction: Btn = {
     label: "Open popup",
     action: true
   };
+  // private sub: Subscription = new Subscription();
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) { 
+    this.collectionOrder$ = this.orderService.collection;
+  }
 
   ngOnInit(): void {
     this.title = "Orders";
     this.subtitle = "Listing orders";
-    this.orderService.collection.subscribe(
-      (datas) => {
-        this.collectionOrder = datas;
-        console.log(this.collectionOrder);
-      }
-    )
+    // this.sub = this.orderService.collection.subscribe(
+    //   (datas) => {
+    //     this.collectionOrder = datas;
+    //     console.log(this.collectionOrder);
+    //   }
+    // )
   }
 
   public changeState(item: Order, event: any) {
@@ -69,5 +74,9 @@ export class PageListOrderComponent implements OnInit {
     alert("Hey");
     console.log("function called");
   }
+
+  // ngOnDestroy() {
+  //   // this.sub.unsubscribe();
+  // }
 
 }
