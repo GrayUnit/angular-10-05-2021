@@ -16,7 +16,8 @@ import { TableDarkComponent } from './components/table-dark/table-dark.component
   ],
   exports: [
     TemplatesModule,
-    TableLightComponent
+    TableLightComponent,
+    TableDarkComponent
   ]
 })
 export class SharedModule { }

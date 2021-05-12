@@ -10,6 +10,11 @@ import { ClientService } from '../../services/client.service';
 export class PageListClientComponent implements OnInit {
 
   public collectionClient: Client[] = [];
+  public headers: string[] = [
+    "Name",
+    "CA",
+    "State"
+  ];
   
   constructor(private clientService: ClientService) { }
 

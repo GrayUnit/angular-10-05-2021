@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table-dark',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-dark.component.scss']
 })
 export class TableDarkComponent implements OnInit {
+
+  @Input() headers: string[] = [];
 
   constructor() { }
 

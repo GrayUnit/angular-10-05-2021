@@ -18,6 +18,7 @@ export class Order implements OrderI {
     }
 
     totalHt(): number {
+        console.log("Total called.")
         return this.nbJours * this.tjmHt;
     }
     
