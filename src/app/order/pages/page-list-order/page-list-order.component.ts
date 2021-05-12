@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from '../../services/order.service';
 
@@ -22,6 +23,7 @@ export class PageListOrderComponent implements OnInit {
                               "State",
                               "Comment"
                             ];
+  public states = Object.values(StateOrder);
 
   constructor(private orderService: OrderService) { }
 
@@ -32,6 +34,20 @@ export class PageListOrderComponent implements OnInit {
       (datas) => {
         this.collectionOrder = datas;
         console.log(this.collectionOrder);
+      }
+    )
+  }
+
+  public changeState(item: Order, event: any) {
+    this.orderService.changeState(item, event.target.value).subscribe(
+      (res) => {
+        item.state = res.state;
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        console.log("finally");
       }
     )
   }
