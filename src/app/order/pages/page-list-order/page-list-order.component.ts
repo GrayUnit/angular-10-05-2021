@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
+import { Btn } from 'src/app/shared/interfaces/btn';
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from '../../services/order.service';
 
@@ -24,6 +25,18 @@ export class PageListOrderComponent implements OnInit {
                               "Comment"
                             ];
   public states = Object.values(StateOrder);
+  public btnRoute = {
+    label: "Ajout d'un order",
+    route: "add" 
+  };
+  public btnHref = {
+    label: "Go to google",
+    href: "http://www.google.fr"
+  };
+  public btnAction = {
+    label: "Open popup",
+    action: true
+  };
 
   constructor(private orderService: OrderService) { }
 
@@ -50,6 +63,11 @@ export class PageListOrderComponent implements OnInit {
         console.log("finally");
       }
     )
+  }
+
+  public openPopup() {
+    alert("Hey");
+    console.log("function called");
   }
 
 }

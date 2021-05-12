@@ -21,3 +21,7 @@
 </app-template-b>
 
 <p [appState]="'cancel'">{{ collectionOrder | json | uppercase | lowercase }}</p>
+
+<app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
+<app-btn [label]="btnHref.label" [href]="btnHref.href"></app-btn>
+<app-btn [label]="btnAction.label" [action]="btnAction.action" (clicked)="openPopup()"></app-btn>

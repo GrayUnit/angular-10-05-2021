@@ -6,6 +6,8 @@ import { TableDarkComponent } from './components/table-dark/table-dark.component
 import { TotalPipe } from './pipes/total.pipe';
 import { CommentPipe } from './pipes/comment.pipe';
 import { StateDirective } from './directives/state.directive';
+import { BtnComponent } from './components/btn/btn.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,11 +16,13 @@ import { StateDirective } from './directives/state.directive';
     TableDarkComponent,
     TotalPipe,
     CommentPipe,
-    StateDirective
+    StateDirective,
+    BtnComponent
   ],
   imports: [
     CommonModule,
-    TemplatesModule
+    TemplatesModule,
+    RouterModule
   ],
   exports: [
     TemplatesModule,
@@ -26,7 +30,8 @@ import { StateDirective } from './directives/state.directive';
     TableDarkComponent,
     TotalPipe,
     CommentPipe,
-    StateDirective
+    StateDirective,
+    BtnComponent
   ]
 })
 export class SharedModule { }
