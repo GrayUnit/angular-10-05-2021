@@ -24,6 +24,7 @@ export class ClientService {
     );
   }
 
+
   get collection(): Observable<Client[]> {
     return this.pCollection;
   }
@@ -36,5 +37,9 @@ export class ClientService {
 
   public updateItem(item: Client): Observable<Client> {
     return this.http.put<Client>(`${this.urlApi}clients/${item.id}`, item);
+  }
+
+  public addItem(item: Client): Observable<Client> {
+    return this.http.post<Client>(`${this.urlApi}clients`, item);
   }
 }

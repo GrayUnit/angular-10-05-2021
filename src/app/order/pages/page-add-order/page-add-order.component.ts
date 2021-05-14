@@ -24,9 +24,9 @@ export class PageAddOrderComponent implements OnInit {
     this.orderService.addItem(item).subscribe(
       (response) => {
         // routing chemin absolue
-        this.router.navigate(['orders']);
+        //this.router.navigate(['orders']);
         // routing chemin relatif
-        // this.router.navigate(['../', {relativeTo: this.route}])
+        this.router.navigate(['../', {relativeTo: this.route}])
       }
     )
   }

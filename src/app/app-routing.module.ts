@@ -4,7 +4,10 @@ import { PageLoginComponent } from './login/pages/page-login/page-login.componen
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: PageLoginComponent },
+  { 
+    path: 'login', 
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
   { 
     path: 'orders',
     loadChildren: () => import('./order/order.module').then(m => m.OrderModule)

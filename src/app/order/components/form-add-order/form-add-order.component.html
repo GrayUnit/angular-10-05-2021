@@ -4,11 +4,27 @@
         <div class="form-group">
             <label for="type">Type :</label>
             <input formControlName="typePresta" type="text" class="form-control" id="type">
+            <div 
+            class="alert alert-danger"
+            *ngIf="form.get('typePresta')?.invalid && form.get('typePresta')?.touched">
+                Champs invalide
+            </div>
         </div>
 
         <div class="form-group">
             <label for="client">Client :</label>
             <input formControlName="client" type="text" class="form-control" id="client">
+            <div 
+            class="alert alert-danger"
+            *ngIf="form.get('client')?.invalid && form.get('client')?.touched"
+            >
+                <div *ngIf="form.get('client')?.errors?.required">
+                    Champs obligatoire
+                </div>
+                <div *ngIf="form.get('client')?.errors?.minlength">
+                    Taille minimale : 2 charactères
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -38,6 +54,6 @@
             <input formControlName="comment" type="text" class="form-control" id="comment">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

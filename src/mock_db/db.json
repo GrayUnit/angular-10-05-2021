@@ -133,6 +133,12 @@
       "name": "Jeff",
       "ca": 22000,
       "state": "Inactif"
+    },
+    {
+      "name": "Un client",
+      "ca": 5000,
+      "state": "Actif",
+      "id": 3
     }
   ]
 }

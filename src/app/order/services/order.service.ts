@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Order } from 'src/app/shared/models/order';
@@ -22,11 +22,15 @@ export class OrderService {
         })
       })
     );
+
   }
+
+
 
   get collection(): Observable<Order[]> {
     return this.pCollection;
   }
+  
 
   public changeState(item: Order, state: StateOrder): Observable<Order> {
     const obj = new Order({...item});

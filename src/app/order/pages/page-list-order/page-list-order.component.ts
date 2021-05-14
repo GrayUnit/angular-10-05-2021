@@ -44,6 +44,7 @@ export class PageListOrderComponent implements OnInit {
   constructor(private orderService: OrderService) { 
     this.collectionOrder$ = this.orderService.collection;
   }
+  test: string[] = [];
 
   ngOnInit(): void {
     this.title = "Orders";
@@ -55,6 +56,7 @@ export class PageListOrderComponent implements OnInit {
     //   }
     // )
   }
+
 
   public changeState(item: Order, event: any) {
     this.orderService.changeState(item, event.target.value).subscribe(
