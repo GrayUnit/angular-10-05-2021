@@ -2,9 +2,10 @@ import { Injectable } from "@angular/core";
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HTTP_INTERCEPTORS } from "@angular/common/http"
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
+import { User } from "../shared/models/user";
 
 
-let users = JSON.parse(localStorage.getItem('users')!) || [];
+let users: User[] = JSON.parse(localStorage.getItem('users')!) || [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -74,11 +75,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok();
     }
 
-    function ok(body?) {
+    function ok(body?: any) {
       return of(new HttpResponse({ status: 200, body }));
     }
 
-    function error(message) {
+    function error(message: string) {
       return throwError({ error: {message }});
     }
 

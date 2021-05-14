@@ -40,7 +40,9 @@ export class LoginFormComponent implements OnInit {
     .subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate(["orders"])
+        this.router.navigate(["orders"]);
+      }, (err) => {
+        alert("Identifiant incorrect");
       }
     )
   }

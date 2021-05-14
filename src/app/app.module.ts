@@ -10,9 +10,11 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TemplatesModule } from './templates/templates.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { fakeBackendProvider } from './utils/fake-backend-auth';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -33,7 +35,9 @@ registerLocaleData(localeFr, 'fr-FR');
     FontAwesomeModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
