@@ -22,15 +22,11 @@ export class OrderService {
         })
       })
     );
-
   }
-
-
 
   get collection(): Observable<Order[]> {
     return this.pCollection;
   }
-  
 
   public changeState(item: Order, state: StateOrder): Observable<Order> {
     const obj = new Order({...item});
@@ -44,6 +40,13 @@ export class OrderService {
 
   public addItem(item: Order): Observable<Order> {
     return this.http.post<Order>(`${this.urlApi}orders`, item);
+  }
+
+  public deleteItem(id: number): Observable<Order> {
+    return this.http.delete<Order>(`${this.urlApi}orders/${id}`).pipe(
+      // Retirer l"élem du pCollection
+      // faire repasser ces valeurs dans mon .next()
+    );
   }
 
 }

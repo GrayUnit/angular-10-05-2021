@@ -12,7 +12,7 @@ import { OrderService } from '../../services/order.service';
 })
 export class PageListOrderComponent implements OnInit {
 
-  // public collectionOrder: Order[] = [];
+  public collection: Order[] = [];
   public collectionOrder$: Observable<Order[]>;
   public title: string = "";
   public subtitle: string = "";
@@ -24,7 +24,8 @@ export class PageListOrderComponent implements OnInit {
                               "Total Ht",
                               "Total Ttc",
                               "State",
-                              "Comment"
+                              "Comment",
+                              "Actions"
                             ];
   public states = Object.values(StateOrder);
   public btnRoute: Btn = {
@@ -49,12 +50,11 @@ export class PageListOrderComponent implements OnInit {
   ngOnInit(): void {
     this.title = "Orders";
     this.subtitle = "Listing orders";
-    // this.sub = this.orderService.collection.subscribe(
-    //   (datas) => {
-    //     this.collectionOrder = datas;
-    //     console.log(this.collectionOrder);
-    //   }
-    // )
+    this.orderService.collection.subscribe(
+      (datas) => {
+        this.collection = datas;
+      }
+    )
   }
 
 
@@ -68,6 +68,18 @@ export class PageListOrderComponent implements OnInit {
       },
       () => {
         console.log("finally");
+      }
+    )
+  }
+
+  public deleteOrder(id: number) {
+    this.orderService.deleteItem(id).subscribe(
+      (res) => {
+        this.orderService.collection.subscribe(
+          (datas) => {
+            this.collection = datas;
+          }
+        )
       }
     )
   }

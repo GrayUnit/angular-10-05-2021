@@ -1,6 +1,6 @@
 <app-text [page]="true">
     <app-template-b [title]="title" [subtitle]="subtitle">
-            <app-table-dark [headers]="headers" *ngIf="collectionOrder$ | async as collection">
+            <app-table-dark [headers]="headers">
                 <tr *ngFor="let item of collection">
                     <td>{{ item.typePresta }}</td>
                     <td>{{ item.client }}</td>
@@ -16,6 +16,9 @@
                         </select>
                     </td>
                     <td>{{ item.comment | comment }}</td>
+                    <td>
+                        <app-icon-delete (click)="deleteOrder(item.id)"></app-icon-delete>
+                    </td>
                 </tr>
             </app-table-dark>
             <app-btn [label]="btnRoute.label" [route]="btnRoute.route!"></app-btn>

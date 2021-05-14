@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -22,7 +22,10 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
           return throwError(err);
         }
-      )
+      ),
+      map((items) => {
+        return items
+      })
     );
   }
 }
