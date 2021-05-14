@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UiComponent } from './components/ui/ui.component';
 import { IconsModule } from '../icons/icons.module';
+import { TextModule } from '../text/text.module';
 
 
 
@@ -11,7 +12,8 @@ import { IconsModule } from '../icons/icons.module';
   ],
   imports: [
     CommonModule,
-    IconsModule
+    IconsModule,
+    TextModule
   ],
   exports: [
     UiComponent

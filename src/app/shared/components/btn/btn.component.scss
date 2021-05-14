@@ -15,3 +15,12 @@ a, button {
     background: darken($color3, 10);
   }
 }
+
+:host-context(app-template-a) {
+    button {
+        background: $color1
+    }
+    &:hover {
+        background: darken($color2, 10);
+    }
+}

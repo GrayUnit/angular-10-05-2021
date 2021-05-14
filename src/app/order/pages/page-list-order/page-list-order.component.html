@@ -1,27 +1,42 @@
-<app-template-b [title]="title" [subtitle]="subtitle">
-        <app-table-dark [headers]="headers" *ngIf="collectionOrder$ | async as collection">
-            <tr *ngFor="let item of collection">
-                <td>{{ item.typePresta }}</td>
-                <td>{{ item.client }}</td>
-                <td>{{ item.nbJours }}</td>
-                <td>{{ item.tjmHt | currency: 'EUR' }}</td>
-                <td>{{ item | total | currency: 'EUR' }}</td>
-                <td>{{ item | total: 'TTC' | currency: 'EUR' }}</td>
-                <td [appState]="item.state">
-                    <select (change)="changeState(item, $event)">
-                        <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">
-                            {{ state }}
-                        </option>
-                    </select>
-                </td>
-                <td>{{ item.comment | comment }}</td>
-            </tr>
-        </app-table-dark>
-
-</app-template-b>
+<app-text [page]="true">
+    <app-template-b [title]="title" [subtitle]="subtitle">
+            <app-table-dark [headers]="headers" *ngIf="collectionOrder$ | async as collection">
+                <tr *ngFor="let item of collection">
+                    <td>{{ item.typePresta }}</td>
+                    <td>{{ item.client }}</td>
+                    <td>{{ item.nbJours }}</td>
+                    <td>{{ item.tjmHt | currency: 'EUR' }}</td>
+                    <td>{{ item | total | currency: 'EUR' }}</td>
+                    <td>{{ item | total: 'TTC' | currency: 'EUR' }}</td>
+                    <td [appState]="item.state">
+                        <select (change)="changeState(item, $event)">
+                            <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">
+                                {{ state }}
+                            </option>
+                        </select>
+                    </td>
+                    <td>{{ item.comment | comment }}</td>
+                </tr>
+            </app-table-dark>
+            <app-btn [label]="btnRoute.label" [route]="btnRoute.route!"></app-btn>
+            <app-btn [label]="btnHref.label" [href]="btnHref.href!"></app-btn>
+            <app-btn [label]="btnAction.label" [action]="btnAction.action!" (clicked)="openPopup()"></app-btn>
+            
+    </app-template-b>
+</app-text>
 
 <!-- <p [appState]="'cancel'">{{ collectionOrder | json | uppercase | lowercase }}</p> -->
 
-<app-btn [label]="btnRoute.label" [route]="btnRoute.route!"></app-btn>
-<app-btn [label]="btnHref.label" [href]="btnHref.href!"></app-btn>
-<app-btn [label]="btnAction.label" [action]="btnAction.action!" (clicked)="openPopup()"></app-btn>
+
+<app-text [page]="true">
+    <h1>Title</h1>
+    <h2>SubTitle</h2>
+    <h3>Subsubtitle</h3>
+    <p>Un paragraphe incroyable</p>
+</app-text>
+<app-text [page]="false">
+    <h1>Title</h1>
+    <h2>SubTitle</h2>
+    <h3>Subsubtitle</h3>
+    <p>Un paragraphe incroyable</p>
+</app-text>

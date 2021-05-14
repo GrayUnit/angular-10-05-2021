@@ -12,4 +12,13 @@
     .state-confirmed {
         background: $color-success;
     }
+
+    .state-actif {
+        background: $color-success;
+        color: white;
+    }
+
+    .state-inactif {
+        background: $color-error;
+    }
 }

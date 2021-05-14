@@ -1,10 +1,20 @@
 <app-template-a title="Clients" subtitle="Listing Clients">
 
-    <app-table-light [headers]="headers">
+    <app-table-light [headers]="headers" *ngIf="collectionClient$ | async as collectionClient">
         <tr *ngFor="let item of collectionClient">
             <td>{{ item.name }}</td>
-            <td>{{ item.ca }}</td>
-            <td>{{ item.state }}</td>
+            <td>{{ item.ca | currency: 'EUR' }}</td>
+            <td [appState]="item.state">
+                <select (change)="changeState(item, $event)">
+                    <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">
+                        {{ state }}
+                    </option>
+                </select>
+            </td>
         </tr>
     </app-table-light>
+    <app-btn [label]="btnRoute.label" [route]="btnRoute.route!"></app-btn>
+    <app-btn [label]="btnHref.label" [href]="btnHref.href!"></app-btn>
+    <app-btn [label]="btnAction.label" [action]="btnAction.action!" (clicked)="openPopup()"></app-btn>
 </app-template-a>
+
